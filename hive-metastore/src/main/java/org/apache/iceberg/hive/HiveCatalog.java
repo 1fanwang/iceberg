@@ -113,6 +113,12 @@ public class HiveCatalog extends BaseMetastoreViewCatalog
     initialize("hive", properties);
   }
 
+  /**
+   * {@inheritDoc}
+   *
+   * <p>When instantiating {@code HiveCatalog} directly, prefer {@link #HiveCatalog(Configuration,
+   * Map)}, which combines {@code setConf(...)} and this call.
+   */
   @Override
   public void initialize(String inputName, Map<String, String> properties) {
     this.catalogProperties = ImmutableMap.copyOf(properties);
@@ -829,6 +835,12 @@ public class HiveCatalog extends BaseMetastoreViewCatalog
         .toString();
   }
 
+  /**
+   * {@inheritDoc}
+   *
+   * <p>When instantiating {@code HiveCatalog} directly, prefer {@link #HiveCatalog(Configuration,
+   * Map)}, which combines this call and {@code initialize(...)}.
+   */
   @Override
   public void setConf(Configuration conf) {
     this.conf = new Configuration(conf);
